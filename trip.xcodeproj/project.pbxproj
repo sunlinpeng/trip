@@ -20,6 +20,7 @@
 		956A91E81C0FE5C500C3ACCC /* KeyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956A91E61C0FE5C500C3ACCC /* KeyCell.xib */; };
 		956A91EC1C1015C900C3ACCC /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 956A91EA1C1015C900C3ACCC /* RegisterViewController.m */; };
 		956A91ED1C1015C900C3ACCC /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 956A91EB1C1015C900C3ACCC /* RegisterViewController.xib */; };
+		956A91F51C103CEF00C3ACCC /* MyMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 956A91F41C103CEF00C3ACCC /* MyMD5.m */; };
 		95963FE11C0E7E7B00199754 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95963FE01C0E7E7B00199754 /* main.m */; };
 		95963FE41C0E7E7B00199754 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95963FE31C0E7E7B00199754 /* AppDelegate.m */; };
 		95963FEC1C0E7E7B00199754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95963FEB1C0E7E7B00199754 /* Assets.xcassets */; };
@@ -237,6 +238,8 @@
 		956A91E91C1015C900C3ACCC /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		956A91EA1C1015C900C3ACCC /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		956A91EB1C1015C900C3ACCC /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		956A91F31C103CEF00C3ACCC /* MyMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMD5.h; sourceTree = "<group>"; };
+		956A91F41C103CEF00C3ACCC /* MyMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMD5.m; sourceTree = "<group>"; };
 		95963FDC1C0E7E7B00199754 /* trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95963FE01C0E7E7B00199754 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95963FE21C0E7E7B00199754 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -510,6 +513,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		956A91F21C103CEF00C3ACCC /* MD5 */ = {
+			isa = PBXGroup;
+			children = (
+				956A91F31C103CEF00C3ACCC /* MyMD5.h */,
+				956A91F41C103CEF00C3ACCC /* MyMD5.m */,
+			);
+			path = MD5;
+			sourceTree = "<group>";
+		};
 		95963FD31C0E7E7B00199754 = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +598,7 @@
 		959640141C0E7EE900199754 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				956A91F21C103CEF00C3ACCC /* MD5 */,
 				959642611C0E906100199754 /* LCBannerView.h */,
 				959642621C0E906100199754 /* LCBannerView.m */,
 				9596415B1C0E843F00199754 /* images */,
@@ -1324,6 +1337,7 @@
 				956A91E71C0FE5C500C3ACCC /* KeyCell.m in Sources */,
 				959641461C0E82A700199754 /* NSArray+MASAdditions.m in Sources */,
 				959641441C0E82A700199754 /* MASViewAttribute.m in Sources */,
+				956A91F51C103CEF00C3ACCC /* MyMD5.m in Sources */,
 				959640BF1C0E80CC00199754 /* SecondViewController.m in Sources */,
 				959641491C0E82A700199754 /* ViewController+MASAdditions.m in Sources */,
 				959640C21C0E80D700199754 /* ThirdViewController.m in Sources */,

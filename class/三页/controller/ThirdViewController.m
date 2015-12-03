@@ -12,6 +12,7 @@
 #import "StarCell.h"
 #import "PriceCell.h"
 #import "KeyCell.h"
+#import "MyMD5.h"
 @interface ThirdViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     UITableView *MytableView;
@@ -36,6 +37,9 @@
     MytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     MytableView.showsVerticalScrollIndicator = NO;
     [self button];
+    NSString *str = @"1234";
+    NSString *st = [MyMD5 md5:str];
+    NSLog(@"加密%@",st);
 }
 -(void)button{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
