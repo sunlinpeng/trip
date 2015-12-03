@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="hello3" rowHeight="60" id="KGk-i7-Jjw" customClass="PriceCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_space.png" translatesAutoresizingMaskIntoConstraints="NO" id="Lgf-pX-0FS">
+                        <rect key="frame" x="8" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="7Ox-Ze-GcS"/>
+                            <constraint firstAttribute="width" constant="40" id="cLx-B9-5zl"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo8-74-AIy">
+                        <rect key="frame" x="56" y="19" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="42" id="kWv-2O-Lev"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.45807686240000001" green="0.45807686240000001" blue="0.45807686240000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不限价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xk0-oT-dFk">
+                        <rect key="frame" x="219" y="19" width="72" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="72" id="UBp-xT-CsM"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="CuJ-mf-a7m">
+                        <rect key="frame" x="292" y="24" width="10" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="HaU-Ug-6EN"/>
+                            <constraint firstAttribute="height" constant="12" id="wiK-0b-wR2"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Vo8-74-AIy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="85r-6v-Jll"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Lgf-pX-0FS" secondAttribute="leading" id="CYo-7D-e2s"/>
+                    <constraint firstItem="CuJ-mf-a7m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="JNc-D5-quW"/>
+                    <constraint firstItem="CuJ-mf-a7m" firstAttribute="leading" secondItem="Xk0-oT-dFk" secondAttribute="trailing" constant="1" id="ZHp-Tw-EbM"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="CuJ-mf-a7m" secondAttribute="trailing" constant="10" id="ezZ-9s-cXW"/>
+                    <constraint firstItem="Xk0-oT-dFk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="11" id="ukc-Iq-5By"/>
+                    <constraint firstItem="Lgf-pX-0FS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="wOG-BR-lDZ"/>
+                    <constraint firstItem="Vo8-74-AIy" firstAttribute="leading" secondItem="Lgf-pX-0FS" secondAttribute="trailing" constant="8" id="zoG-lb-O9n"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="530" y="501"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Arrow" width="32" height="32"/>
+        <image name="icon_space.png" width="32" height="32"/>
+    </resources>
+</document>
