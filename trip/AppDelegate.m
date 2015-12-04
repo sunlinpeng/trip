@@ -10,7 +10,10 @@
 #import "SLPNavigationController.h"
 #import "SLPTabBarController.h"
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
+#import "UMSocial.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocialWechatHandler.h"
+//566109dd67e58e90a20008a3  appKey
 @interface AppDelegate ()
 
 @end
@@ -25,8 +28,21 @@
     self.window.rootViewController = [self tab];
     [self.window makeKeyAndVisible];
     [self setNavigationBarTheme];
+    [UMSocialData setAppKey:@"566109dd67e58e90a20008a3"];
+     [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
+    [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
     return YES;
 }
+//微信、QQde回调方法
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];//登录成功此处的url改成登录的url
+    if (result == FALSE) {
+        //调用其他SDK，例如支付宝SDK等
+    }
+    return result;
+}
+
 #pragma mark - 设置导航栏主题
 - (void)setNavigationBarTheme
 {
