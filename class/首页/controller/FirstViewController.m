@@ -11,6 +11,9 @@
 #import "SaleCell.h"
 #import "UIImageView+WebCache.h"
 #import "ThemeCell.h"
+#import "MJRefresh.h"
+#import "MMProgressHUD.h"
+#import "Masonry.h"
 @interface FirstViewController ()<LCBannerViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *ScrollArr;
@@ -36,11 +39,40 @@
     [MyTableView registerNib:[UINib nibWithNibName:@"ThemeCell" bundle:nil] forCellReuseIdentifier:@"456"];
     [MyTableView registerNib:[UINib nibWithNibName:@"SaleCell" bundle:nil] forCellReuseIdentifier:@"123"];
     [self.view addSubview:MyTableView];
+    [MyTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(64);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(@(self.view.frame.size.height-104));
+    }];
 //    [self fun5];
     [self load];
+    [self refreshAndLoading];
 
 }
+-(void)refreshAndLoading{
+   [MyTableView addHeaderWithCallback:^{
+       if (isrefresh) {
+           return ;
+       }
+       isrefresh = YES;
+       [self load];
+       isrefresh = NO;
+       [MyTableView headerEndRefreshing];
+   }];
+    [MyTableView addFooterWithCallback:^{
+        if (isLoading) {
+            return ;
+        }
+        isLoading = YES;
+        [self load];
+        isLoading =NO;
+        [MyTableView footerEndRefreshing];
+    }];
+}
 -(void)load{
+    [MMProgressHUD setPresentationStyle:MMProgressHUDPresentationStyleExpand];
+    [MMProgressHUD showWithTitle:nil status:@"玩命加载中..."];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:HomeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"%@",responseObject);
@@ -82,6 +114,7 @@
         priceArr = mutArr4;
 //        NSLog(@"%@",priceArr);
         [MyTableView reloadData];
+        [MMProgressHUD dismissWithSuccess:@"加载完成👼"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error.description);
     }];

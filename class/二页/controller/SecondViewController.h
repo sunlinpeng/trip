@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SecondViewController : UIViewController
-
+{
+    BOOL isrefresh;
+    BOOL isLoading;
+}
 @end

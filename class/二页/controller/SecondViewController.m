@@ -8,6 +8,8 @@
 
 #import "SecondViewController.h"
 #import "ThemeCell.h"
+#import "MMProgressHUD.h"
+#import "MJRefresh.h"
 @interface SecondViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *imageArr;
@@ -27,12 +29,42 @@
     MytableView.delegate = self;
     MytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:MytableView];
+    [MytableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(64);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(@(self.view.frame.size.height-104));
+    }];
+
     MytableView.showsVerticalScrollIndicator = NO;
     [MytableView registerNib:[UINib nibWithNibName:@"ThemeCell" bundle:nil] forCellReuseIdentifier:@"456"];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self load];
+    [self refreshAndLoading];
+}
+-(void)refreshAndLoading{
+    [MytableView addHeaderWithCallback:^{
+        if (isrefresh) {
+            return ;
+        }
+        isrefresh = YES;
+        [self load];
+        isrefresh = NO;
+        [MytableView headerEndRefreshing];
+    }];
+    [MytableView addFooterWithCallback:^{
+        if (isLoading) {
+            return ;
+        }
+        isLoading = YES;
+        [self load];
+        isLoading = NO;
+        [MytableView footerEndRefreshing];
+    }];
 }
 -(void)load{
+    [MMProgressHUD setPresentationStyle:MMProgressHUDPresentationStyleExpand];
+    [MMProgressHUD showWithTitle:nil status:@"玩命加载中。。。"];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:ThemeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
 //        NSLog(@"%@",responseObject);
@@ -52,6 +84,7 @@
         priceArr = mut2;
         titleArr = mut3;
         [MytableView reloadData];
+        [MMProgressHUD dismissWithSuccess:@"加载完成👼"];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error.description);
     }];

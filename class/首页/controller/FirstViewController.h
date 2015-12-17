@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FirstViewController : UIViewController
-
+{
+    BOOL isrefresh;
+    BOOL isLoading;
+}
+-(void)refreshAndLoading;
 @end
