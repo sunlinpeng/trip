@@ -36,7 +36,7 @@
     [MyTableView registerNib:[UINib nibWithNibName:@"ThemeCell" bundle:nil] forCellReuseIdentifier:@"456"];
     [MyTableView registerNib:[UINib nibWithNibName:@"SaleCell" bundle:nil] forCellReuseIdentifier:@"123"];
     [self.view addSubview:MyTableView];
-    [self fun5];
+//    [self fun5];
     [self load];
 
 }
@@ -52,6 +52,7 @@
         }
         ScrollArr = mutArr;
         [MyTableView reloadData];
+        [self Scroll];
         //        NSLog(@"%@",ScrollArr);
         
         NSArray *array1 = responseObject[@"favorableList"];
@@ -85,12 +86,12 @@
         NSLog(@"%@",error.description);
     }];
 }
-//用延时队列来进行操作使图片的数据加载先加载出来在进行Scrollview的创建
--(void)fun5{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self Scroll];
-    });
-}
+////用延时队列来进行操作使图片的数据加载先加载出来在进行Scrollview的创建
+//-(void)fun5{
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self Scroll];
+//    });
+//}
 -(void)Scroll{
     view = [[LCBannerView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 0.3*self.view.frame.size.height) delegate:self imageURLs:ScrollArr placeholderImage:@"news_loading" timerInterval:3 currentPageIndicatorTintColor:[UIColor grayColor] pageIndicatorTintColor:[UIColor whiteColor]];
 

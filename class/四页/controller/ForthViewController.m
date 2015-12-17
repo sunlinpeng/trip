@@ -12,16 +12,17 @@
 #import "AllAnimation.h"
 #import "UMSocial.h"
 #import "UMSocialQQHandler.h"
+#import "AppDelegate.h"
 @interface ForthViewController ()<UINavigationControllerDelegate>
 {
     NSString *userName;
     NSString *uid;
+    UIView *view;
 }
 @end
 
 @implementation ForthViewController
 -(void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
     [AllAnimation AnimationWithTitleLabel:_imageView withView:self.view];
     [AllAnimation AnimationWithTitleLabel:_weixinimageview withView:self.view];
     [AllAnimation AnimationWithTitleLabel:_weiboimageview withView:self.view];
@@ -36,6 +37,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"icon_back1.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+//    self.tabBarController.tabBar.hidden = YES;
+    self.tabBarController.hidesBottomBarWhenPushed = NO;
     self.navigationItem.leftBarButtonItem = item;
     _imageView.transform = CGAffineTransformMakeTranslation(0, -200);
     _weiboimageview.transform = CGAffineTransformMakeTranslation(0, 200);
@@ -52,8 +55,9 @@
     [self.view endEditing:YES];
 }
 -(void)back{
-    FirstViewController *first = [[FirstViewController alloc]init];
-    [self.navigationController pushViewController:first animated:YES];
+    //这里的返回按钮可以返回到主页面
+    self.navigationController.tabBarController.hidesBottomBarWhenPushed=NO;
+    self.navigationController.tabBarController.selectedIndex=0;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -71,6 +75,23 @@
 */
 
 - (IBAction)LoginBn:(id)sender {
+   static BOOL is = YES;
+    if (is == YES) {
+        view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height/2-100)];
+        view.backgroundColor = [UIColor whiteColor];
+        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(100, 100, 200, 100)];
+        lab.text = @"密码输入错误";
+        lab.textColor = [UIColor redColor];
+//        lab.backgroundColor = [UIColor blueColor];
+        [view addSubview:lab];
+        view.alpha = 0.5;
+        [self.view addSubview:view];
+        is = NO;
+    }else{
+        view.hidden = YES;
+        is = YES;
+    }
+    
 }
 
 - (IBAction)Forget:(id)sender {

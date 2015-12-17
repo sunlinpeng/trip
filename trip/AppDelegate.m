@@ -13,6 +13,7 @@
 #import "UMSocial.h"
 #import "UMSocialQQHandler.h"
 #import "UMSocialWechatHandler.h"
+#import "NewFeatureViewController.h"
 //566109dd67e58e90a20008a3  appKey
 @interface AppDelegate ()
 
@@ -25,13 +26,46 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [self tab];
     [self.window makeKeyAndVisible];
     [self setNavigationBarTheme];
     [UMSocialData setAppKey:@"566109dd67e58e90a20008a3"];
      [UMSocialQQHandler setQQWithAppId:@"100424468" appKey:@"c7394704798a158208a74ab60104f0ba" url:@"http://www.umeng.com/social"];
     [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
+    // 1 第一次的标识
+    NSString *isFirst = @"isFirstDoMyApp8133111";//修改这里的唯一标识可以让app第一次运行时出现前面的引导页
+    
+    // 2 判断是否存才
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *firstString = [ud objectForKey:isFirst];
+    
+    // 3 执行 - 选择不同的根控制器
+    if (firstString) {
+        
+        // 不是第一次运行
+        [self startGoutrip];
+    } else {
+        
+        // 是第一次运行 存储标识
+        [ud setObject:@"GoutripFirst" forKey:isFirst];
+        [ud synchronize];
+        
+        // 进入新特性控制器
+        NewFeatureViewController *new = [[NewFeatureViewController alloc] init];
+        new.startBlock = ^{
+            
+            // 开始ailvgo按钮block回调  更换跟控制器
+            [self startGoutrip];
+        };
+        
+        // 设置新特性控制器为根控制器
+        self.window.rootViewController = new;
+    }
+
     return YES;
+}
+-(void)startGoutrip{
+    self.window.rootViewController = [self tab];
+
 }
 //微信、QQde回调方法
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
