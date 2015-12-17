@@ -30,6 +30,12 @@
     MytableView.dataSource = self;
     MytableView.delegate = self;
     [self.view addSubview:MytableView];
+    [MytableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(64);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(@(self.view.frame.size.height-104-60*4 ));
+    }];
     [MytableView registerNib:[UINib nibWithNibName:@"CityCell" bundle:nil] forCellReuseIdentifier:@"hello"];
     [MytableView registerNib:[UINib nibWithNibName:@"DateCell" bundle:nil] forCellReuseIdentifier:@"hello1"];
     [MytableView registerNib:[UINib nibWithNibName:@"StarCell" bundle:nil] forCellReuseIdentifier:@"hello2"];
