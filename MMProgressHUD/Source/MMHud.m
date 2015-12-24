@@ -68,7 +68,6 @@ NSString * const MMProgressHUDFontNameNormal = @"HelveticaNeue-Light";
 
 - (void)dealloc {
     MMHudLog(@"dealloc");
-    
 }
 
 #pragma mark - Construction

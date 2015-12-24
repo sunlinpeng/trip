@@ -75,7 +75,7 @@
     [MMProgressHUD showWithTitle:nil status:@"玩命加载中..."];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:HomeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"%@",responseObject);
+        NSLog(@"%@",responseObject);
         NSArray *array = responseObject[@"bannerList"];
         NSMutableArray *mutArr = [[NSMutableArray alloc]initWithCapacity:0];
         for (NSDictionary *dic in array) {
