@@ -31,16 +31,15 @@
     [AllAnimation AnimationWithTitleLabel:_textfield2 withView:self.view];
     [AllAnimation AnimationWithTitleLabel:_forgetimageview withView:self.view];
     [AllAnimation AnimationWithTitleLabel:_registerimageview withView:self.view];
+    self.tabBarController.tabBar.hidden=YES;
+
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"icon_back1.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
-//    self.tabBarController.tabBar.hidden = YES;
-//    self.tabBarController.hidesBottomBarWhenPushed = NO;
-    self.tabBarController.tabBar.hidden=YES;
-    [self.navigationController.navigationBar setHidden:NO];
+
     self.navigationItem.leftBarButtonItem = item;
     _imageView.transform = CGAffineTransformMakeTranslation(0, -200);
     _weiboimageview.transform = CGAffineTransformMakeTranslation(0, 200);
@@ -59,8 +58,11 @@
 -(void)back{
     //这里的返回按钮可以返回到主页面
 //    self.navigationController.tabBarController.hidesBottomBarWhenPushed=NO;
-    self.hidesBottomBarWhenPushed = NO;
+//    self.hidesBottomBarWhenPushed = NO;
     self.navigationController.tabBarController.selectedIndex=0;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -67,6 +67,7 @@
     self.window.rootViewController = [self tab];
 
 }
+
 //微信、QQde回调方法
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
@@ -95,7 +96,11 @@
     dic[NSForegroundColorAttributeName] = [UIColor whiteColor];
     [navBar setTitleTextAttributes:dic];
 }
-
+//禁止横屏
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 -(UITabBarController*)tab{
     FirstViewController *first = [[FirstViewController alloc]init];
     SecondViewController *second = [[SecondViewController alloc]init];
@@ -110,26 +115,27 @@
     nav1.tabBarItem.title = @"主页";
     first.navigationItem.title = @"GouTrip";
 //    nav1.navigationBar.barTintColor = UIColorFromRGB(0x1C90FF);
-    nav1.tabBarItem.image = [UIImage imageNamed:@"nav_home"];
-    nav1.tabBarItem.selectedImage = [UIImage imageNamed:@"nav_homeh"];
+    nav1.tabBarItem.image = [UIImage imageNamed:@"tabbar_account.png"];
+    nav1.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_account_press.png"];
     
     nav2.tabBarItem.title = @"主题游";
     second.navigationItem.title = @"GouTrip";
-    nav2.tabBarItem.image = [UIImage imageNamed:@"nav_theme"];
-    nav2.tabBarItem.selectedImage = [UIImage imageNamed:@"nav_themeh"];
+    nav2.tabBarItem.image = [UIImage imageNamed:@"tabbar_appfree.png"];
+    nav2.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_appfree_press.png"];
     
     nav3.tabBarItem.title = @"资讯";
     third.navigationItem.title = @"GouTrip";
-    nav3.tabBarItem.image = [UIImage imageNamed:@"nav_hotel"];
-    nav3.tabBarItem.selectedImage = [UIImage imageNamed:@"nav_hotelh"];
+    nav3.tabBarItem.image = [UIImage imageNamed:@"tabbar_limitfree.png"];
+    nav3.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_limitfree_press.png"];
     
     nav4.tabBarItem.title = @"我的";
     forth.navigationItem.title = @"用户登录";
-    nav4.tabBarItem.image = [UIImage imageNamed:@"nav_center"];
-    nav4.tabBarItem.selectedImage = [UIImage imageNamed:@"nav_centerh"];
+    nav4.tabBarItem.image = [UIImage imageNamed:@"tabbar_rank.png"];
+    nav4.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_rank_press.png"];
     
     UITabBarController *tab = [[UITabBarController alloc]init];
     tab.viewControllers = @[nav1,nav2,nav3,nav4];
+    tab.selectedViewController = [tab.viewControllers objectAtIndex:1];//在这里设置默认首次展现的是哪个视图控制器
     return tab;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
